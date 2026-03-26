@@ -22,10 +22,10 @@
       padding: 20px;
     }
 
-   img {
-  width: 100%;
-  height: auto;
-}
+    img {
+      width: 100%;
+      height: auto;
+    }
 
     .box, .shop {
       background: white;
@@ -33,22 +33,46 @@
       padding: 20px;
       width: 90%;
       max-width: 400px;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .btn {
       display: inline-block;
       margin-top: 10px;
-      padding: 10px 25px;
+      padding: 12px 0;
+      width: 100%;
+      max-width: 200px;
       background: black;
       color: white;
       text-decoration: none;
       border-radius: 30px;
+      font-size: 14px;
     }
 
     .subbtn {
       background: #555;
+    }
+
+    /* 横並び */
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-group a {
+      flex: 1;
+      max-width: 150px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 20px;
+      font-size: 12px;
+      color: #999;
     }
   </style>
 </head>
@@ -59,8 +83,7 @@
   <h1>美容室｜ココナッツ中山店</h1>
 </header>
 
-<img src="coconut1.jpg" style="width:100%; height:auto;">
-
+<img src="coconut1.jpg">
 
 <div class="container">
 
@@ -73,7 +96,10 @@
   <div class="box">
     <h2>予約</h2>
     <p>📞 045-935-7066</p>
-    <a href="tel:0459357066" class="btn">電話で予約</a><br>
+
+    <div class="btn-group">
+      <a href="tel:0459357066" class="btn">電話</a>
+    </div>
   </div>
 
   <div class="box">
@@ -92,14 +118,21 @@
   <div class="shop">
     <h2>理容室 ヘアーズ旬</h2>
     <p>神奈川県 横浜市 瀬谷区　[最寄り：三ツ境駅]</p>
-    <a href="tel:0453677650" class="btn">電話で予約</a>
+
+    <div class="btn-group">
+      <a href="tel:0453677650" class="btn">電話</a>
+    </div>
   </div>
 
   <div class="shop">
     <h2>美容室 ビューティーライフ緑園店</h2>
     <p>神奈川県 横浜市 泉区　[最寄り：緑園都市駅・南万騎が原駅]</p>
-    <a href="tel:0454108700" class="btn" style="margin-bottom:10px;">電話で予約</a><br>
-    <a href="https://beauty.hotpepper.jp/slnH000435742/" class="btn">ホットペッパーで予約</a><br>
+
+    <div class="btn-group">
+      <a href="tel:0454108700" class="btn">電話</a>
+      <a href="https://beauty.hotpepper.jp/slnH000435742/" class="btn">ホットペッパー</a>
+    </div>
+
     <a href="ryokuen.html" class="btn subbtn">詳細はこちら</a>
   </div>
 
