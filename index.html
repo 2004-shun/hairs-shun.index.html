@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>ヘアーズ旬</title>
-
   <style>
     body {
       margin: 0;
@@ -16,6 +15,7 @@
       background: black;
       color: white;
       padding: 30px 20px;
+      position: relative;
     }
 
     header h1 {
@@ -23,7 +23,6 @@
       font-size: 26px;
       letter-spacing: 2px;
     }
-
 
     /* ハンバーガー */
     .hamburger {
@@ -35,7 +34,7 @@
       cursor: pointer;
       position: absolute;
       top: 20px;
-      right: 20px;
+      right: 20px; /* 右上に表示 */
       z-index: 200;
     }
 
@@ -46,13 +45,13 @@
       border-radius: 2px;
       transition: 0.3s;
     }
-    
+
     /* メニュー */
     #menu {
       display: none;
       background: white;
       position: absolute;
-      top: 60px;
+      top: 70px;
       right: 20px;
       border: 1px solid #ccc;
       border-radius: 8px;
@@ -73,7 +72,7 @@
       border-bottom: none;
     }
 
-     /* メニュー開閉アニメーション（ハンバーガー変形） */
+    /* ハンバーガー変形 */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -85,7 +84,6 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
     }
-
 
     img {
       width: 100%;
@@ -150,11 +148,22 @@
     }
   </style>
 </head>
-
 <body>
 
 <header>
   <h1>ヘアーズ旬</h1>
+  <!-- ハンバーガー -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <!-- メニュー -->
+  <div id="menu">
+    <a href="index.html">ホーム</a>
+    <a href="coconut.html">ココナッツ中山店</a>
+    <a href="ryokuen.html">ビューティーライフ緑園店</a>
+  </div>
 </header>
 
 <img src="shun1.jpg">
@@ -165,7 +174,6 @@
   <div class="shop">
     <h2>理容室 ヘアーズ旬</h2>
     <p>神奈川県 横浜市 瀬谷区　[最寄り：三ツ境駅]</p>
-
     <div class="btn-group">
       <a href="tel:0453677650" class="btn">電話で予約</a>
     </div>
@@ -177,23 +185,19 @@
   <div class="shop">
     <h2>美容室 ココナッツ中山店</h2>
     <p>神奈川県 横浜市 緑区　[最寄り：中山駅]</p>
-
     <div class="btn-group">
       <a href="tel:0459357066" class="btn">電話で予約</a>
     </div>
-
     <a href="coconut.html" class="btn subbtn">詳細はこちら</a>
   </div>
 
   <div class="shop">
     <h2>美容室 ビューティーライフ緑園店</h2>
     <p>神奈川県 横浜市 泉区　[最寄り：緑園都市駅・南万騎が原駅]</p>
-
     <div class="btn-group">
       <a href="tel:0454108700" class="btn">電話で予約</a>
       <a href="https://beauty.hotpepper.jp/slnH000435742/" class="btn">ホットペッパーで予約</a>
     </div>
-
     <a href="ryokuen.html" class="btn subbtn">詳細はこちら</a>
   </div>
 
@@ -202,6 +206,16 @@
 <footer>
   © ヘアーズ旬
 </footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+</script>
 
 </body>
 </html>
