@@ -21,36 +21,60 @@
     .container {
       padding: 20px;
     }
-
-    img {
+    
+ img {
       width: 100%;
-      max-height: 300px;
-      object-fit: cover;
+      height: auto;
     }
-
-    .box {
+    
+.box, .shop {
       background: white;
       margin: 20px auto;
       padding: 20px;
       width: 90%;
       max-width: 400px;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    a {
+    .btn {
       display: inline-block;
       margin-top: 10px;
-      padding: 10px 25px;
+      padding: 12px 0;
+      width: 100%;
+      max-width: 200px;
       background: black;
       color: white;
       text-decoration: none;
       border-radius: 30px;
+      font-size: 14px;
     }
 
     .subbtn {
       background: #555;
     }
+
+      /* 横並び */
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-group a {
+      flex: 1;
+      max-width: 150px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 20px;
+      font-size: 12px;
+      color: #999;
+    }
+    
   </style>
 </head>
 
@@ -68,7 +92,7 @@
   <div class="box">
     <h2>店舗情報</h2>
     <p>神奈川県 横浜市 泉区</p>
-    <p>最寄り：南万騎が原駅・緑園都市駅</p>
+    <a>最寄り：南万騎が原駅・緑園都市駅</a>
   </div>
 
   <div class="box">
