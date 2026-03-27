@@ -12,6 +12,7 @@ body {
   font-family: sans-serif;
   background-color: #f5f5f5;
   text-align: center;
+  overflow-x: hidden; /* ←はみ出し防止 */
 }
 
 /* ===== ヘッダー ===== */
@@ -20,7 +21,8 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px;
+  padding: 20px 60px 20px 20px; /* ←右に余白作る */
+  box-sizing: border-box;
   color: white;
   z-index: 300;
   transition: 0.3s;
@@ -31,7 +33,7 @@ body {
 }
 
 .overlay-header.scrolled {
-  background: black;
+  background: #cceeff;
 }
 
 .overlay-header h1 {
@@ -40,14 +42,14 @@ body {
   letter-spacing: 2px;
 }
 
-/* ===== ハンバーガー（見切れ完全修正） ===== */
+/* ===== ハンバーガー（完全修正） ===== */
 .hamburger {
   position: absolute;
-  right: 25px; /* ←余裕持たせる */
+  right: 15px; /* ←内側に配置 */
   top: 50%;
   transform: translateY(-50%);
-  width: 34px;
-  height: 26px;
+  width: 32px;
+  height: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,15 +63,15 @@ body {
   transition: 0.3s;
 }
 
-/* ×（ズレ防止ver） */
+/* ×（ズレ最小） */
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(2px,2px);
+  transform: rotate(45deg) translate(1px,1px);
 }
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(3px,-3px);
+  transform: rotate(-45deg) translate(2px,-2px);
 }
 
 /* ===== サイドバー ===== */
@@ -108,7 +110,7 @@ body {
   cursor: pointer;
 }
 
-/* ===== 背景暗くする ===== */
+/* ===== 背景暗く ===== */
 #overlay {
   position: fixed;
   top: 0;
@@ -198,7 +200,7 @@ body {
   .hamburger {
     width: 28px;
     height: 20px;
-    right: 15px;
+    right: 10px;
   }
 
   .shop {
@@ -222,7 +224,7 @@ body {
   </div>
 </div>
 
-<!-- 背景暗く -->
+<!-- 背景 -->
 <div id="overlay"></div>
 
 <!-- サイドバー -->
@@ -283,7 +285,7 @@ const closeBtn = document.getElementById('closeBtn');
 const overlay = document.getElementById('overlay');
 const header = document.getElementById('header');
 
-/* 開く */
+/* 開閉 */
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   sidebar.classList.toggle('active');
@@ -300,7 +302,7 @@ function closeMenu(){
 closeBtn.addEventListener('click', closeMenu);
 overlay.addEventListener('click', closeMenu);
 
-/* スクロールでヘッダー */
+/* スクロール */
 window.addEventListener('scroll', () => {
   if(window.scrollY > 50){
     header.classList.add('scrolled');
