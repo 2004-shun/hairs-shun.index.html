@@ -22,7 +22,6 @@ body {
   left: 0;
   width: 100%;
   height: 70px;
-  padding: 0 20px;
 
   display: flex;
   align-items: center;
@@ -41,7 +40,8 @@ body {
 
 .overlay-header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 26px;
+  letter-spacing: 2px;
 }
 
 .overlay-header.scrolled h1 {
@@ -54,8 +54,8 @@ body {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  width: 28px;
-  height: 20px;
+  width: 30px;
+  height: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -63,8 +63,9 @@ body {
 }
 
 .hamburger span {
-  height: 3px;
+  height: 4px;
   background: white;
+  border-radius: 2px;
   transition: 0.3s;
 }
 
@@ -74,40 +75,46 @@ body {
 
 /* × */
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(2px,2px);
+  transform: rotate(45deg) translate(5px,5px);
 }
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(2px,-2px);
+  transform: rotate(-45deg) translate(6px,-6px);
 }
 
 /* ===== サイドバー ===== */
 #sidebar {
   position: fixed;
-  right: -240px;
+  right: -260px;
   top: 0;
-  width: 240px;
+  width: 260px;
   height: 100%;
   background: white;
-  transition: 0.4s;
+  transition: 0.4s ease;
   z-index: 400;
   padding-top: 80px;
+  text-align: left;
 }
 
-#sidebar.active { right: 0; }
+#sidebar.active {
+  right: 0;
+}
 
 #sidebar a {
   display: block;
-  padding: 15px;
+  padding: 15px 20px;
   text-decoration: none;
   color: black;
+  border-bottom: 1px solid #eee;
 }
 
-/* ===== 背景暗く ===== */
+/* ===== 背景暗転 ===== */
 #overlay {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.4);
@@ -125,6 +132,7 @@ body {
 /* ===== 画像 ===== */
 .hero img {
   width: 100%;
+  height: auto;
 }
 
 /* ===== コンテンツ ===== */
@@ -132,40 +140,74 @@ body {
   padding: 20px;
 }
 
+/* カード（今までのやつ） */
 .shop {
   background: white;
   margin: 20px auto;
-  padding: 20px;
+  padding: 25px;
+  width: 90%;
   max-width: 400px;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+.shop h2 {
+  margin-bottom: 10px;
+}
+
+.shop p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* ボタン（今までのやつ） */
 .btn {
   display: inline-block;
   margin-top: 10px;
-  padding: 10px;
+  padding: 10px 20px;
   background: black;
   color: white;
-  border-radius: 20px;
   text-decoration: none;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.subbtn {
+  background: #555;
+}
+
+/* 横並び */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-group a {
+  flex: 1;
+  max-width: 150px;
 }
 
 /* ===== ギャラリー ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap: 5px;
+  gap: 8px;
   margin-top: 20px;
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 /* ===== マップ ===== */
 .map {
-  margin: 20px 0;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
 }
 
 /* ===== 固定予約ボタン ===== */
@@ -178,10 +220,23 @@ body {
   padding: 15px;
   font-size: 16px;
   text-decoration: none;
+  z-index: 500;
 }
 
-/* スマホ */
+/* フッター */
+footer {
+  margin-top: 30px;
+  padding: 20px;
+  font-size: 12px;
+  color: #999;
+}
+
+/* ===== スマホ ===== */
 @media(max-width:600px){
+  .overlay-header h1 {
+    font-size: 20px;
+  }
+
   .gallery {
     grid-template-columns: repeat(2,1fr);
   }
@@ -196,7 +251,9 @@ body {
   <h1>ヘアーズ旬</h1>
 
   <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </div>
 
@@ -206,7 +263,8 @@ body {
 <!-- サイドバー -->
 <div id="sidebar">
   <a href="index.html">ヘアーズ旬</a>
-  <a href="#">店舗情報</a>
+  <a href="coconut.html">ココナッツ中山店</a>
+  <a href="ryokuen.html">ビューティーライフ緑園店</a>
 </div>
 
 <!-- メイン画像 -->
@@ -216,11 +274,40 @@ body {
 
 <div class="container">
 
-  <!-- 店舗 -->
+  <!-- 本店 -->
   <div class="shop">
     <h2>理容室 ヘアーズ旬</h2>
-    <p>神奈川県 横浜市 瀬谷区</p>
-    <a href="tel:0453677650" class="btn">電話予約</a>
+    <p>神奈川県 横浜市 瀬谷区　[最寄り：三ツ境駅]</p>
+
+    <div class="btn-group">
+      <a href="tel:0453677650" class="btn">電話で予約</a>
+    </div>
+  </div>
+
+  <!-- 支店 -->
+  <h2>支店｜美容室の紹介</h2>
+
+  <div class="shop">
+    <h2>美容室 ココナッツ中山店</h2>
+    <p>神奈川県 横浜市 緑区　[最寄り：中山駅]</p>
+
+    <div class="btn-group">
+      <a href="tel:0459357066" class="btn">電話で予約</a>
+    </div>
+
+    <a href="coconut.html" class="btn subbtn">詳細はこちら</a>
+  </div>
+
+  <div class="shop">
+    <h2>美容室 ビューティーライフ緑園店</h2>
+    <p>神奈川県 横浜市 泉区　[最寄り：緑園都市駅・南万騎が原駅]</p>
+
+    <div class="btn-group">
+      <a href="tel:0454108700" class="btn">電話で予約</a>
+      <a href="https://beauty.hotpepper.jp/slnH000435742/" class="btn">ホットペッパーで予約</a>
+    </div>
+
+    <a href="ryokuen.html" class="btn subbtn">詳細はこちら</a>
   </div>
 
   <!-- ギャラリー -->
@@ -241,6 +328,10 @@ body {
   </div>
 
 </div>
+
+<footer>
+  © ヘアーズ旬
+</footer>
 
 <!-- 固定予約 -->
 <a href="tel:0453677650" class="fixed-btn">
