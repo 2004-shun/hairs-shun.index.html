@@ -23,32 +23,27 @@ body {
   width: 100%;
   height: 70px;
   padding: 0 20px;
-  box-sizing: border-box;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: transparent; /* ←最初透明 */
+  background: transparent;
   color: white;
   z-index: 300;
   transition: 0.3s;
 }
 
-/* スクロール後 */
 .overlay-header.scrolled {
-  background: rgba(204, 238, 255, 0.95);
+  background: rgba(204,238,255,0.95);
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* タイトル */
 .overlay-header h1 {
   margin: 0;
-  font-size: 26px;
-  letter-spacing: 2px;
+  font-size: 24px;
 }
 
-/* スクロール後文字 */
 .overlay-header.scrolled h1 {
   color: black;
 }
@@ -59,8 +54,8 @@ body {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  width: 30px;
-  height: 22px;
+  width: 28px;
+  height: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,12 +64,10 @@ body {
 
 .hamburger span {
   height: 3px;
-  background: white; /* ←最初白 */
-  border-radius: 2px;
+  background: white;
   transition: 0.3s;
 }
 
-/* スクロール後黒 */
 .overlay-header.scrolled .hamburger span {
   background: black;
 }
@@ -93,44 +86,28 @@ body {
 /* ===== サイドバー ===== */
 #sidebar {
   position: fixed;
-  top: 0;
   right: -240px;
+  top: 0;
   width: 240px;
   height: 100%;
   background: white;
-  box-shadow: -3px 0 10px rgba(0,0,0,0.2);
-  transition: 0.4s ease;
+  transition: 0.4s;
   z-index: 400;
   padding-top: 80px;
-  text-align: left;
 }
 
-#sidebar.active {
-  right: 0;
-}
+#sidebar.active { right: 0; }
 
 #sidebar a {
   display: block;
-  padding: 15px 20px;
+  padding: 15px;
   text-decoration: none;
   color: black;
-  border-bottom: 1px solid #eee;
 }
 
-/* ×ボタン */
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* ===== 背景暗転 ===== */
+/* ===== 背景暗く ===== */
 #overlay {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.4);
@@ -148,7 +125,6 @@ body {
 /* ===== 画像 ===== */
 .hero img {
   width: 100%;
-  height: auto;
 }
 
 /* ===== コンテンツ ===== */
@@ -156,73 +132,59 @@ body {
   padding: 20px;
 }
 
-/* フェードイン */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.6s;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .shop {
   background: white;
   margin: 20px auto;
-  padding: 25px;
-  width: 90%;
+  padding: 20px;
   max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.shop p {
-  font-size: 14px;
-  color: #555;
+  border-radius: 10px;
 }
 
 .btn {
   display: inline-block;
   margin-top: 10px;
-  padding: 10px 20px;
+  padding: 10px;
   background: black;
   color: white;
+  border-radius: 20px;
   text-decoration: none;
-  border-radius: 30px;
-  font-size: 14px;
 }
 
-.subbtn {
-  background: #555;
+/* ===== ギャラリー ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 5px;
+  margin-top: 20px;
 }
 
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
 }
 
-/* ===== スマホ ===== */
-@media screen and (max-width: 600px) {
+/* ===== マップ ===== */
+.map {
+  margin: 20px 0;
+}
 
-  .overlay-header h1 {
-    font-size: 20px;
+/* ===== 固定予約ボタン ===== */
+.fixed-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* スマホ */
+@media(max-width:600px){
+  .gallery {
+    grid-template-columns: repeat(2,1fr);
   }
-
-  .hamburger {
-    width: 26px;
-    height: 18px;
-    right: 15px;
-  }
-
-  .shop {
-    width: 95%;
-  }
-
 }
 </style>
 </head>
@@ -234,9 +196,7 @@ body {
   <h1>ヘアーズ旬</h1>
 
   <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 </div>
 
@@ -245,98 +205,72 @@ body {
 
 <!-- サイドバー -->
 <div id="sidebar">
-  <div class="close-btn" id="closeBtn">×</div>
-
   <a href="index.html">ヘアーズ旬</a>
-  <a href="coconut.html">ココナッツ中山店</a>
-  <a href="ryokuen.html">ビューティーライフ緑園店</a>
+  <a href="#">店舗情報</a>
 </div>
 
-<!-- 画像 -->
+<!-- メイン画像 -->
 <div class="hero">
   <img src="shun3.jpg">
 </div>
 
-<!-- コンテンツ -->
 <div class="container">
 
-  <div class="shop fade">
+  <!-- 店舗 -->
+  <div class="shop">
     <h2>理容室 ヘアーズ旬</h2>
     <p>神奈川県 横浜市 瀬谷区</p>
-    <a href="tel:0453677650" class="btn">電話で予約</a>
+    <a href="tel:0453677650" class="btn">電話予約</a>
   </div>
 
-  <h2 class="fade">支店｜美容室の紹介</h2>
-
-  <div class="shop fade">
-    <h2>美容室 ココナッツ中山店</h2>
-    <p>神奈川県 横浜市 緑区</p>
-    <a href="tel:0459357066" class="btn">電話で予約</a>
-    <br>
-    <a href="coconut.html" class="btn subbtn">詳細はこちら</a>
+  <!-- ギャラリー -->
+  <h2>スタイルギャラリー</h2>
+  <div class="gallery">
+    <img src="style1.jpg">
+    <img src="style2.jpg">
+    <img src="style3.jpg">
+    <img src="style4.jpg">
+    <img src="style5.jpg">
+    <img src="style6.jpg">
   </div>
 
-  <div class="shop fade">
-    <h2>美容室 ビューティーライフ緑園店</h2>
-    <p>神奈川県 横浜市 泉区</p>
-
-    <div class="btn-group">
-      <a href="tel:0454108700" class="btn">電話で予約</a>
-      <a href="https://beauty.hotpepper.jp/slnH000435742/" class="btn">ホットペッパーで予約</a>
-    </div>
-
-    <a href="ryokuen.html" class="btn subbtn">詳細はこちら</a>
+  <!-- マップ -->
+  <h2>アクセス</h2>
+  <div class="map">
+    <iframe src="https://www.google.com/maps?q=横浜市瀬谷区&output=embed" width="100%" height="250"></iframe>
   </div>
 
 </div>
 
-<footer>
-  © ヘアーズ旬
-</footer>
+<!-- 固定予約 -->
+<a href="tel:0453677650" class="fixed-btn">
+  📞 電話で予約する
+</a>
 
 <script>
 const hamburger = document.getElementById('hamburger');
 const sidebar = document.getElementById('sidebar');
-const closeBtn = document.getElementById('closeBtn');
 const overlay = document.getElementById('overlay');
 const header = document.getElementById('header');
 
-/* 開閉 */
-hamburger.addEventListener('click', () => {
+hamburger.onclick = () => {
   hamburger.classList.toggle('active');
   sidebar.classList.toggle('active');
   overlay.classList.toggle('active');
-});
+};
 
-/* 閉じる */
-function closeMenu(){
-  sidebar.classList.remove('active');
+overlay.onclick = () => {
   hamburger.classList.remove('active');
+  sidebar.classList.remove('active');
   overlay.classList.remove('active');
-}
+};
 
-closeBtn.addEventListener('click', closeMenu);
-overlay.addEventListener('click', closeMenu);
-
-/* スクロールで色変化 */
 window.addEventListener('scroll', () => {
   if(window.scrollY > 50){
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
-});
-
-/* フェードイン */
-const fades = document.querySelectorAll('.fade');
-
-window.addEventListener('scroll', () => {
-  fades.forEach(el => {
-    const rect = el.getBoundingClientRect().top;
-    if(rect < window.innerHeight - 50){
-      el.classList.add('show');
-    }
-  });
 });
 </script>
 
